@@ -2,5 +2,7 @@ node_modules
 bundle.js
 .vscode
 .DS_Store
-package-lock.json
 coverage
+*.swp
+
+package-lock.json
