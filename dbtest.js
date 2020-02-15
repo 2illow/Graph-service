@@ -1,5 +1,6 @@
 const { Pool, Client } = require('pg');
 const faker = require('faker');
+const Promise = require('bluebird');
 
 const pool = new Pool({
   user: 'postgres',
@@ -17,28 +18,27 @@ const client = new Client({
   port: 5432,
 });
 
-var seed = function(callback) {
-  var cities = createCityChunk();
-  var query = {
-    text: 'INSERT INTO cities (name, estimates, dates) VALUES ($1, $2::integer[], $3::date[])',
-    values: [cities[0].name, cities[0].estimates, cities[0].dates], 
-  }
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log(err.stack);
-    } else {
-      console.log(res)
-      pool.query('SELECT * FROM cities', (err, res) => {
-        if (err) {
-          console.log(err);
-          callback(err);
-        } else {
-          console.log(res.rows);
-          callback(null, res);
-        }
-      });
+var seed = function(count = 1, callback) {
+  var cities = createCityChunk(1000);
+  var promArr = [];
+  for(var i = 0; i < cities.length; i++) {
+    var query = {
+      text: 'INSERT INTO cities (name, estimates, dates) VALUES ($1, $2::integer[], $3::date[])',
+      values: [cities[i].name, cities[i].estimates, cities[i].dates], 
     }
-  });
+    promArr.push(pool.query(query))
+  }
+  Promise.all(promArr)
+    .then((data) => {
+      if(count === 1) {
+        console.log(data);
+        callback();
+        console.log('success');
+      } else {
+        seed(count-1, callback);
+      }
+    })
+    .catch((err) => {console.log(err); callback();});
 }
 
 
@@ -129,7 +129,7 @@ pool.query(citiesTable, (err, res) => {
       console.log(err ? err.stack : res.rows);
       if(!err){
         console.log('Tables Created');
-        seed(() => {pool.end});
+        seed(100, () => {pool.end});
       }
     });
   });
