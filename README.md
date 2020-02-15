@@ -1,6 +1,7 @@
 # 2illow Graph CRUD API
 ## Create
 **Endpoint: /api/graphs/properties (POST)**
+
 Accepts JSON data with property information and adds it to the DB.
 Each element in estimates should have a corresponding date at the same index in dates.
 example request body: 
@@ -22,6 +23,7 @@ response body contains insert ID.
 
 ## Read
 **Endpoint: /api/graphs/properties/:id (GET)**
+
 Returns graph data for the property ID and associated neighborhood/city.
 Each data point in estimates represents a month.
 cestimates is city estimates; nestimates is neighborhood estimates
@@ -54,6 +56,7 @@ response example:
 ```
 
 **Legacy endpoint: /seed (GET)**
+
 Originally adds an entry to the DB and sends that entry back as response.
 sample data:
 ```
@@ -80,6 +83,7 @@ sample data:
 ```
 ## Update
 **Endpoint: /api/graphs/properties/:id/estimates (PATCH)**
+
 Accepts JSON with date/estimate pair or listed/sold date/estimate pair
 request body 1:
 ```
@@ -92,6 +96,7 @@ request body 2:
 
 ## Delete
 **Endpoint: /api/graphs/properties/:id**
+
 Deletes all property data for a specific property id
 
 response: HTTP code 200 if successful
