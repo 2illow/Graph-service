@@ -20,10 +20,11 @@ const generateEstimates = function(len = 120) {
   var slope = Math.floor(Math.random() * 10000);
   // lastvalue is actually starting value but will be reused in loop for maninpulation
   var lastvalue = Math.floor(Math.random() * 2000000) + 50000;
-  for (var i = 0; i < len; i++) {
+  estimates.push(lastvalue);
+  for (var i = 1; i < len; i++) {
     var estimate = lastvalue + (slope * i) + (Math.random() * (50000) - 25000);
     estimates.push(Math.abs(Math.round(estimate/1000) * 1000));    
-    lastvalue = estimate / 100;
+    lastvalue = estimate;
   }
   return estimates;
 };
