@@ -4,5 +4,6 @@ bundle.js
 .DS_Store
 coverage
 *.swp
-
+dbtest.js
+config.js
 package-lock.json
