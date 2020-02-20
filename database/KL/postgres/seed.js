@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 const Promise = require('bluebird');
-const model = require('./models');
+const model = require('../models');
 const config = require('./config.js');
 
 const pool = new Pool(config);
