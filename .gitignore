@@ -8,3 +8,5 @@ dbtest.js
 config.js
 package-lock.json
 *.csv
+newrelic.js
+*.log
