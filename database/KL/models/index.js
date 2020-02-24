@@ -5,8 +5,8 @@ const generateDates = function(start = 10, end = 20) {
   var dates = [];
   for (var i = start; i < end; i++) {
     for (var j = 1; j <= 12; j++) {
-      dates.push(new Date(2000 + i, j));
-      // dates.push(`${2000 + i}-${j.toString().padStart(2, '0')}-01`)
+      // dates.push(new Date(2000 + i, j));
+      dates.push(`${2000 + i}-${j.toString().padStart(2, '0')}-01`)
     }
   }
   return dates;
