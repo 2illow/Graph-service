@@ -8,7 +8,6 @@ const selProp = function(id, callback) {
   var city;
   var neighborhood;
   var property;
-  console.log(id);
   var query = {
     text: `SELECT * FROM properties 
       INNER JOIN neighborhoods ON neighborhoods.id=properties.neighborhood 

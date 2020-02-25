@@ -31,7 +31,7 @@ const generateEstimates = function(len = 120) {
 };
 
 const createEstimateDate = function(size = 120) {
-  dates = generateDates(10, 10 + (size / 12));
+  dates = generateDates(20-(size/12), 20);
   estimates = generateEstimates(size);
   return {dates: dates, estimates: estimates};
 };
@@ -40,7 +40,7 @@ const createCityChunk = function(size = 10) {
   var cities = [];
   for (var i = 0; i < size; i++) {
     var entry = {};
-    entry = createEstimateDate();
+    entry = createEstimateDate(60);
     entry.name = faker.address.city();
     cities.push(entry);
   }
@@ -51,7 +51,7 @@ const createNeighborhoodChunk = function(size = 10) {
   var neighborhoods = [];
   for (var i = 0; i < size; i++) {
     var entry = {};
-    entry = createEstimateDate();
+    entry = createEstimateDate(60);
     entry.name = faker.address.streetName();
     neighborhoods.push(entry);
   }
@@ -62,7 +62,7 @@ const createPropertyChunk = function(size = 200) {
   var properties = [];
   for (var i = 0; i < size; i++) {
     var entry = {};
-    entry = createEstimateDate();
+    entry = createEstimateDate(60);
     entry.name = faker.address.streetAddress();
     var index = Math.floor(Math.random() * entry.dates.length); 
     entry.soldDate = entry.dates[index];

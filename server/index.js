@@ -22,12 +22,11 @@ app.get('/seed', (req, res) => {
 app.get('/api/graphs/properties/:id', (req, res) => {
   pgdb.selProp(req.params.id, (err, data) => {
     if (err) {
-      console.log(err)
       res.writeHead(500);
       res.end();
     } else {
       res.writeHead(200);
-      res.end(JSON.stringify(data));
+      res.end(JSON.stringify(data.rows));
     }
   });
 });
