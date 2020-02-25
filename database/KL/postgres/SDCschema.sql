@@ -45,4 +45,5 @@ CREATE TABLE keys(
 
 \copy cities(c_name, c_estimates, c_dates) FROM '~/Desktop/SDC/Graph-service/database/KL/postgres/cities.csv' DELIMITER ',' CSV HEADER;
 \copy neighborhoods(n_name, n_estimates, n_dates, city) FROM '~/Desktop/SDC/Graph-service/database/KL/postgres/neighborhoods.csv' DELIMITER ',' CSV HEADER;
+\copy properties(name, estimates, dates, neighborhood, listeddate, listedprice, solddate, soldprice) FROM '~/Desktop/SDC/Graph-service/database/KL/postgres/properties.csv' DELIMITER ',' CSV HEADER;
 
