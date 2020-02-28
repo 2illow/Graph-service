@@ -1,9 +1,9 @@
-require('newrelic');
+// require('newrelic');
 const express = require('express');
 //const util = require('util');
 const app = express();
 const port = 3003;
-const db = require('../database/schema.js');
+// const db = require('../database/schema.js');
 const pgdb = require('../database/KL/postgres/index.js');
 
 app.use(express.json());
